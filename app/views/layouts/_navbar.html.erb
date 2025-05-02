@@ -12,16 +12,16 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <%= link_to "Home", root_path, class: "nav-link #{current_page?(root_path) ? 'active' : ''}" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Users</a>
+            <%= link_to "Users", users_path, class: "nav-link #{controller_name == 'users' ? 'active' : ''}" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
+            <%= link_to "Messages", messages_path, class: "nav-link #{controller_name == 'messages' ? 'active' : ''}" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chats</a>
+            <%= link_to "Chats", chats_path, class: "nav-link #{controller_name == 'chats' ? 'active' : ''}" %>
           </li>
         </ul>
       </div>

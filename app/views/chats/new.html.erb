@@ -1,11 +1,24 @@
+<h1>New Chat</h1>
+
+<% if @chat.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Please fix the following errors:</h4>
+    <ul>
+      <% @chat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @chat) do |f| %>
-    <div class="form-group">
-      <%= f.label :sender_id, "Sender" %>
-      <%= f.select :sender_id, User.all.collect { |u| [u.email, u.id] }, { prompt: "Select sender" }, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :receiver_id, "Receiver" %>
-      <%= f.select :receiver_id, User.all.collect { |u| [u.email, u.id] }, { prompt: "Select receiver" }, class: 'form-control' %>
-    </div>
-    <%= f.submit "Create Chat", class: "btn btn-primary mt-2" %>
-  <% end %>
+  <div class="form-group mb-3">
+    <%= f.label :sender_id, "Sender" %>
+    <%= f.select :sender_id, User.all.collect { |u| [u.email, u.id] }, { prompt: "Select sender" }, class: 'form-control' %>
+  </div>
+  <div class="form-group mb-3">
+    <%= f.label :receiver_id, "Receiver" %>
+    <%= f.select :receiver_id, User.all.collect { |u| [u.email, u.id] }, { prompt: "Select receiver" }, class: 'form-control' %>
+  </div>
+  <%= f.submit "Create Chat", class: "btn btn-primary" %>
+<% end %>

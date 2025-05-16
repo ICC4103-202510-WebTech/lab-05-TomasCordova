@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     end
   
     def show
-      @messages = Message.find(params[:id])
+      @message = Message.find(params[:id])
     end
 
     def new
@@ -19,6 +19,19 @@ class MessagesController < ApplicationController
         redirect_to @message, notice: "Mensaje enviado correctamente."
       else
         render :new
+      end
+    end
+
+    def edit
+      @message = Message.find(params[:id])
+    end
+
+    def update
+      @message = Message.find(params[:id])
+      if @message.update(message_params)
+        redirect_to @message, notice: 'Message was successfully updated.'
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
   

@@ -14,11 +14,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get '/home', to: 'main#home'  
-  resources :messages, only: [:index, :new, :create, :show]
-  resources :chats, only: [:index, :new, :create, :show] 
-
+  resources :messages
+  resources :chats
   resources :users
-  get "/users/:id", to: "users#show"
-  get "/users/new", to: "users#new"
-  post "/users", to: "users#create"
 end
